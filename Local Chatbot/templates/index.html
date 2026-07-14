@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Ollama Chat</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div>
+            <h2>Local Ollama</h2>
+            <p>Chat locally</p>
+          </div>
+          <button id="newChatBtn" class="icon-btn">＋</button>
+        </div>
+        <div class="sidebar-search">
+          <input id="conversationSearch" type="text" placeholder="Search conversations" />
+        </div>
+        <div id="conversationList" class="conversation-list"></div>
+      </aside>
+
+      <main class="chat-panel">
+        <header class="chat-header">
+          <div>
+            <h1 id="chatTitle">New conversation</h1>
+            <p id="chatMeta">Ready to answer</p>
+          </div>
+          <div class="header-actions">
+            <button id="exportBtn" class="icon-btn">Export</button>
+            <button id="themeToggle" class="icon-btn">☀️</button>
+            <button id="settingsToggle" class="icon-btn">⚙️</button>
+          </div>
+        </header>
+
+        <section id="messages" class="messages"></section>
+
+        <section id="settingsPanel" class="settings-panel hidden">
+          <h3>Settings</h3>
+          <label>
+            System prompt
+            <textarea id="systemPromptInput"></textarea>
+          </label>
+          <label>
+            Temperature
+            <input id="temperatureInput" type="range" min="0" max="1" step="0.01" />
+            <span id="temperatureValue">0.7</span>
+          </label>
+          <label>
+            Max tokens
+            <input id="maxTokensInput" type="number" min="1" max="4096" />
+          </label>
+          <label>
+            Top-p
+            <input id="topPInput" type="range" min="0" max="1" step="0.01" />
+            <span id="topPValue">0.9</span>
+          </label>
+          <label>
+            Top-k
+            <input id="topKInput" type="number" min="1" max="100" />
+          </label>
+          <label>
+            Model
+            <select id="modelSelect"></select>
+          </label>
+          <label>
+            Pull model
+            <div class="inline-actions">
+              <input id="pullModelInput" type="text" placeholder="llama3.2" />
+              <button id="pullModelBtn" type="button">Pull</button>
+            </div>
+          </label>
+          <div id="modelInfo" class="model-info"></div>
+        </section>
+
+        <footer class="composer">
+          <textarea id="messageInput" rows="1" placeholder="Message Ollama"></textarea>
+          <button id="sendBtn">Send</button>
+        </footer>
+      </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.3/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
